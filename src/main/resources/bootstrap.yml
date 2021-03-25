@@ -1,0 +1,43 @@
+spring:
+  batch.job.enabled: false
+  config:
+    activate:
+      on-profile:
+      - native
+      - default
+      - kubernetes 
+  application:
+      name: csv-import
+  cloud:
+    discovery:
+      enabled: true
+    kubernetes:
+      enabled: true    
+      config:
+        enabled: true
+        enable-api: true
+        sources: 
+        - name: sb-note
+        paths:
+        - /deployments/config/application.properties
+      discovery:
+        enabled: true
+      client:
+        namespace: default
+        clientCertFile: /var/snap/microk8s/current/certs/kubelet.crt
+        caCertFile: /var/snap/microk8s/current/certs/kubelet.crt
+        ca-cert-file: /var/snap/microk8s/current/certs/kubelet.crt
+        trust-certs: true
+        masterUrl: https://kubernetes:443
+        
+debug: true
+---
+spring:
+  config:
+    activate:
+      on-profile:
+      - ide
+  cloud:
+    kubernetes:
+      client:
+        masterUrl: https://kubernetes.default.svc:16443
