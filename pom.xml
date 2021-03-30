@@ -10,10 +10,10 @@
 		<relativePath>../starcases_basepom</relativePath>
 	</parent>
 
-	<artifactId>csvimport</artifactId>
+	<artifactId>batchcsvimport</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>csv-import</name>
-	<description>csv import</description>
+	<description>Batch CSV Import Global Terrorism Dataset. Config from Microk8s configmap.</description>
 
 	<dependencies>
 		<dependency>

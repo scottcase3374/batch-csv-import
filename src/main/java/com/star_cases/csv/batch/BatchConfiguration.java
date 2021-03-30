@@ -155,7 +155,7 @@ public class BatchConfiguration
     public Step step1(StepBuilderFactory stepBuilderFactory, JdbcBatchItemWriter<GlobalTerrorism> writer)
     {
       return stepBuilderFactory.get("step1")
-        .<GlobalTerrorism, GlobalTerrorism> chunk(1000)
+        .<GlobalTerrorism, GlobalTerrorism> chunk(20000)
         .reader(reader())
         .processor(processor())
         .writer(writer)
@@ -174,7 +174,7 @@ public class BatchConfiguration
                 factory.setTransactionManager(transactionManager);
                 factory.setIsolationLevelForCreate("ISOLATION_SERIALIZABLE");
                 factory.setTablePrefix("BATCH_");
-                factory.setMaxVarCharLength(20000);
+                factory.setMaxVarCharLength(50000); // Until I am sure of actual need.
                 return factory.getObject();
             }
         };

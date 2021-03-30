@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
-public class CsvImportApplication implements CommandLineRunner
+public class BatchCsvImportApplication implements CommandLineRunner
 {
     @Autowired
     JobLauncher jobLauncher;
@@ -20,7 +21,10 @@ public class CsvImportApplication implements CommandLineRunner
 
     public static void main(String[] args)
     {
-		SpringApplication.run(CsvImportApplication.class, args);
+		ConfigurableApplicationContext ctx = SpringApplication.run(BatchCsvImportApplication.class, args);
+
+		// Force Java process shutdown after job completes
+		System.exit(SpringApplication.exit(ctx));
 	}
 
     @Override
@@ -31,6 +35,5 @@ public class CsvImportApplication implements CommandLineRunner
                 .toJobParameters();
 
         jobLauncher.run(job, params);
-
     }
 }
