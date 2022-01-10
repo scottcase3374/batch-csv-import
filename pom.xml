@@ -3,12 +3,12 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.star_cases</groupId>
-		<artifactId>basepom</artifactId>
-		<version>1.0.0</version>
-		<relativePath>../starcases_basepom</relativePath>
-	</parent>
+    <parent>
+        <groupId>com.starcases</groupId>
+        <artifactId>sbpom</artifactId>
+        <version>1.0.0</version>
+        <relativePath>../starcases_basepom/sbpom/pom.xml</relativePath>
+    </parent>
 
 	<artifactId>batchcsvimport</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
@@ -60,6 +60,7 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				 <version>${springbboot.version}</version>
 			</plugin>
 		</plugins>
 	</build>
