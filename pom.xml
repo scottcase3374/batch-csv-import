@@ -5,15 +5,18 @@
 	<modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.starcases</groupId>
-        <artifactId>sbpom</artifactId>
-        <version>1.0.0</version>
-        <relativePath>../starcases_basepom/sbpom/pom.xml</relativePath>
+        <artifactId>sbcloud-base-pom</artifactId>
+        <version>1.0.2</version>
     </parent>
 
 	<artifactId>batchcsvimport</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>csv-import</name>
 	<description>Batch CSV Import Global Terrorism Dataset. Config from Microk8s configmap.</description>
+
+	<properties>
+		<data.file.loc></data.file.loc>
+	</properties>
 
 	<dependencies>
 		<dependency>

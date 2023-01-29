@@ -14,23 +14,23 @@ import org.springframework.context.ConfigurableApplicationContext;
 public class BatchCsvImportApplication implements CommandLineRunner
 {
     @Autowired
-    JobLauncher jobLauncher;
+    private JobLauncher jobLauncher;
 
     @Autowired
-    Job job;
+    private Job job;
 
-    public static void main(String[] args)
+    public static void main(final String[] args)
     {
-		ConfigurableApplicationContext ctx = SpringApplication.run(BatchCsvImportApplication.class, args);
+		final ConfigurableApplicationContext ctx = SpringApplication.run(BatchCsvImportApplication.class, args);
 
 		// Force Java process shutdown after job completes
 		System.exit(SpringApplication.exit(ctx));
 	}
 
     @Override
-    public void run(String... args) throws Exception
+    public void run(final String... args) throws Exception
     {
-        JobParameters params = new JobParametersBuilder()
+        final JobParameters params = new JobParametersBuilder()
                 .addString("JobID", String.valueOf(System.currentTimeMillis()))
                 .toJobParameters();
 
