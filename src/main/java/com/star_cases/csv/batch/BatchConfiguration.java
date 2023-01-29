@@ -31,6 +31,14 @@ import jakarta.validation.constraints.NotNull;
 @EnableBatchProcessing
 public class BatchConfiguration
 {
+	/**
+	 * It would be useful to support zip files containing the data which would reduce space needs
+	 * Might be able to source directly from remote sites (current dataset or others).
+	 *
+	 * @param dataURL
+	 * @return
+	 * @throws IOException
+	 */
 	@Bean
 	InputStreamResource dataStreamRes(final @Value("${dataUrl}") String dataURL) throws IOException
 	{
@@ -176,7 +184,7 @@ public class BatchConfiguration
 
         jobFactory.setDataSource(dataSource);
         jobFactory.setTransactionManager(transactionManager);
-        jobFactory.setIsolationLevelForCreate("ISOLATION_SERIALIZABLE");
+        jobFactory.setIsolationLevelForCreate("ISOLATION_SERIALIZABLE"); // Probably overkill but for now..
         jobFactory.setTablePrefix("BATCH_");
         jobFactory.setMaxVarCharLength(50000); // Until I am sure of actual need.
         jobFactory.afterPropertiesSet();
